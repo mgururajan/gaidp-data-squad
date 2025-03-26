@@ -7,7 +7,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 import numpy as np
 
-df=pd.read_csv('D:\\DATA BACKUP-15-JAN-2025\\Program\\GenAI- Hackathon\\sample_dataset.csv')
+import json
+json_data = {"customer_id":{"0":1001,"1":1002,"2":1003,"3":1004},"Account_Balance":{"0":15000,"1":32000,"2":-5000,"3":70000},"Transaction_Amount":{"0":500,"1":1200,"2":300,"3":2000},"Reported_Amount":{"0":500,"1":1200,"2":300,"3":1800},"Currency":{"0":"USD","1":"EUR","2":"GBP","3":"USD"},"Country":{"0":"US","1":"DE","2":"UK","3":"US"},"Transaction_Date":{"0":"2025-02-25","1":"2025-02-20","2":"2025-02-18","3":"2025-02-28"},"Risk_Score":{"0":3,"1":2,"2":6,"3":5}}
+json_str = json.dumps(json_data)
+df = pd.read_json(json_str)
+
 
 # Define a function to validate the transaction amount vs. reported amount
 def validate_amount(row):
